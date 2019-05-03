@@ -3,4 +3,4 @@ project(Work_data_structures)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Work_data_structures main.cpp)
+add_executable(Work_data_structures main.cpp binary-indexed-trees/index.cpp binary-indexed-trees/index.h)

@@ -1,6 +1,9 @@
 #include <iostream>
 
+#include "binary-indexed-trees/index.h"
+
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+
+    binaryIndexedTree();
     return 0;
 }
