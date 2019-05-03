@@ -9,7 +9,12 @@
 #ifndef WORK_DATA_STRUCTURES_INDEX_H
 #define WORK_DATA_STRUCTURES_INDEX_H
 
-std::string implode( const std::string &glue, const std::vector<std::string> &pieces );
+std::string implode(const std::string &glue, const std::vector<std::string> &pieces);
+
 int binaryIndexedTree();
+
+int readingCumulativeFrequency(int idx);
+
+void changeFrequencyAtSomePositionAndUpdateTree(int idx, int val);
 
 #endif //WORK_DATA_STRUCTURES_INDEX_H
