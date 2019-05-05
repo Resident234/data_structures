@@ -17,4 +17,10 @@ int readingCumulativeFrequency(int idx);
 
 void changeFrequencyAtSomePositionAndUpdateTree(int idx, int val);
 
+int readTheActualFrequencyAtPositionV1(int idx);
+
+int readTheActualFrequencyAtPositionV2(int idx);
+
+void scalingTheEntireTreeByConstantFactor(double c);
+
 #endif //WORK_DATA_STRUCTURES_INDEX_H
