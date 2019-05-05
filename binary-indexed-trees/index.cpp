@@ -109,7 +109,7 @@ int binaryIndexedTree() {
         std::cout << implode("; ", strStdout) << std::endl;
     }*/
 
-    int cumulativeFrequencyIndex = findIndexWithGivenCumulativeFrequency(20);
+    int cumulativeFrequencyIndex = findIndexWithGivenCumulativeFrequency(21);
 
     strStdout.clear();
     strStdout.push_back("cumulativeFrequencyIndex = " + std::to_string(cumulativeFrequencyIndex));
@@ -228,7 +228,17 @@ int findIndexWithGivenCumulativeFrequency(int cumFre) {
     int bitMask = MaxIdx;
     while (bitMask != 0) {
         int tIdx = idx + bitMask;// the midpoint of the current interval
+
+        strStdout.clear();
+        strStdout.push_back("tIdx = " + std::to_string(tIdx));
+
         bitMask >>= 1;// halve the current interval
+
+        strStdout.push_back("bitMask = " + std::to_string(bitMask));
+        strStdout.push_back("cumFre = " + std::to_string(cumFre));
+        strStdout.push_back("tree[tIdx] = " + std::to_string(tree[tIdx]));
+        strStdout.push_back("idx = " + std::to_string(idx));
+
         if (tIdx > MaxIdx)// avoid overflow
             continue;
         if (cumFre >= tree[tIdx]) {
@@ -237,6 +247,8 @@ int findIndexWithGivenCumulativeFrequency(int cumFre) {
             idx = tIdx;// update index
             cumFre -= tree[tIdx];// update the frequency for the next iteration
         }
+
+        std::cout << implode("; ", strStdout) << std::endl;
     }
     if (cumFre != 0)// maybe the given cumulative frequency doesn't exist
         return -1;
