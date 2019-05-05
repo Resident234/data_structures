@@ -23,4 +23,7 @@ int readTheActualFrequencyAtPositionV2(int idx);
 
 void scalingTheEntireTreeByConstantFactor(double c);
 
+int findIndexWithGivenCumulativeFrequency(int cumFre);
+
+
 #endif //WORK_DATA_STRUCTURES_INDEX_H

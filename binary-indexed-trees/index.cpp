@@ -35,7 +35,6 @@ int binaryIndexedTree() {
     int r;
     int idxIndicesFrom;
 
-
     c[0] = 0;
     tree[0] = 0;
 
@@ -65,7 +64,7 @@ int binaryIndexedTree() {
         std::cout << implode("; ", strStdout) << std::endl;
     }
 
-    int cumulativeFrequency = readingCumulativeFrequency(13);
+    /*int cumulativeFrequency = readingCumulativeFrequency(13);
     //changeFrequencyAtSomePositionAndUpdateTree(5, 1);
 
     std::cout << std::endl;
@@ -108,7 +107,13 @@ int binaryIndexedTree() {
         strStdout.push_back("f = " + std::to_string(f[idx]));
         strStdout.push_back("tree = " + std::to_string(tree[idx]));
         std::cout << implode("; ", strStdout) << std::endl;
-    }
+    }*/
+
+    int cumulativeFrequencyIndex = findIndexWithGivenCumulativeFrequency(20);
+
+    strStdout.clear();
+    strStdout.push_back("cumulativeFrequencyIndex = " + std::to_string(cumulativeFrequencyIndex));
+    std::cout << implode("; ", strStdout) << std::endl;
 
     return 0;
 }
@@ -212,6 +217,32 @@ void scalingTheEntireTreeByConstantFactor(double c) {
     }
 }
 
+int findIndexWithGivenCumulativeFrequency(int cumFre) {
+    // If in the tree exists more than one index with the same
+    // cumulative frequency, this procedure will return
+    // some of them
+    // bitMask - initialy, it is the greatest bit of MaxIdx
+    // bitMask stores the current interval that should be searched
+
+    int idx = 0; // this variable will be the output
+    int bitMask = MaxIdx;
+    while (bitMask != 0) {
+        int tIdx = idx + bitMask;// the midpoint of the current interval
+        bitMask >>= 1;// halve the current interval
+        if (tIdx > MaxIdx)// avoid overflow
+            continue;
+        if (cumFre >= tree[tIdx]) {
+            // if the current cumulative frequency is equal to cumFre,
+            // we are still looking for a higher index (if exists)
+            idx = tIdx;// update index
+            cumFre -= tree[tIdx];// update the frequency for the next iteration
+        }
+    }
+    if (cumFre != 0)// maybe the given cumulative frequency doesn't exist
+        return -1;
+    else
+        return idx;
+}
 
 std::string implode(const std::string &glue, const std::vector<std::string> &pieces) {
     std::string a;
