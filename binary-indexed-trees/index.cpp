@@ -256,6 +256,8 @@ int findIndexWithGivenCumulativeFrequency(int cumFre) {
         return idx;
 }
 
+
+
 std::string implode(const std::string &glue, const std::vector<std::string> &pieces) {
     std::string a;
     int leng = pieces.size();
